@@ -1,10 +1,17 @@
+import { useState } from "react"
+import IntroScreen from "./components/IntroScreen"
+import Experience from "./components/Experience"
 
-const App = () => {
+export default function App() {
+  const [entered, setEntered] = useState(false)
+
   return (
-    <main className="max-w-7xl mx-auto relative">
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-50">Hello</div>
-    </main>
-  );
-};
-
-export default App;
+    <div className="w-full h-screen overflow-hidden bg-black">
+      {!entered ? (
+        <IntroScreen onEnter={() => setEntered(true)} />
+      ) : (
+        <Experience />
+      )}
+    </div>
+  )
+}
